@@ -1,0 +1,8 @@
+# IDE files
+.idea/
+
+# Python compiled files
+*.pyc
+
+# SQLite db
+db.sqlite3
