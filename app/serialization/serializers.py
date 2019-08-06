@@ -23,6 +23,7 @@ class CustomerSerializer(serializers.Serializer):
           this method.
         :return: the new Customer
         """
+        # TODO: make_password
         return Customer.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
