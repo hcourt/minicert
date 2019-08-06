@@ -38,3 +38,7 @@ Run migrations against the database
 ```console
 $ python manage.py migrate
 ```
+Start a shell
+```console
+$ python manage.py shell
+```
