@@ -2,6 +2,15 @@
 
 A tiny identity and certificate management API, written in Django.
 
+This API supports:
+- **Creating/Deleting Customers**
+- **Creating Certificates**
+- **Listing all of a Customer’s Active Certificates**
+- **Activating/Deactivating Certificates.** If a certificate is either activated
+ or de-activated, it can notify an external system (via an HTTP call) about that
+ fact.
+- **Persistence** (data is stored in a DB and survives computer restarts)
+
 ## Prerequisites
 
 This documentation assumes you have Git, Python (3.5+), pip, virtualenv, and 
@@ -26,6 +35,11 @@ $ source ~/.virtualenvs/minicertenv/bin/activate
 Install requirements
 ```console
 $ pip install -r requirements/py3.txt
+```
+
+Run the server
+```console
+python manage.py runserver
 ```
 
 ## Development
