@@ -5,12 +5,14 @@ CERTIFICATE_PRIVATE_KEY_MAX_LENGTH = 2048
 CERTIFICATE_CERT_BODY_MAX_LENGTH = 2048
 
 
-# A Certificate:
-# - Belongs to one and only one Customer
-# - Can be either active or inactive
-# - Has a private key
-# - Has a certificate body
 class Certificate(models.Model):
+    """
+    A Certificate:
+    - Belongs to one and only one Customer
+    - Can be either active or inactive
+    - Has a private key
+    - Has a certificate body
+    """
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     active = models.BooleanField(default=True)
     private_key = models.BinaryField(

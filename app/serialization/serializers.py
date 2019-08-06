@@ -13,17 +13,18 @@ class CustomerSerializer(serializers.Serializer):
     email = serializers.CharField(max_length=CUSTOMER_EMAIL_MAX_LENGTH,
                                   style={'base_template': 'textarea.html'})
     password = serializers.CharField(max_length=CUSTOMER_PASSWORD_MAX_LENGTH,
-                                     write_only=True)
+                                     write_only=True, required=True)
 
     def create(self, validated_data):
         """
         Create a return a new Customer, given the validated data.
         :param validated_data: For Customers, we support 'name', 'email', and
-          'password'.  'password' MUST be appropriately hashed before calling
-          this method.
+          'password'.  'password' is hashed by this function before being
+          stored.
         :return: the new Customer
         """
-        # TODO: make_password
+        validated_data['password'] = make_password(
+            validated_data.get('password'))
         return Customer.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
