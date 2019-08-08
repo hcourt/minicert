@@ -1,6 +1,5 @@
 from django.contrib.auth.hashers import make_password
 from django.db import models
-from rest_framework import mixins
 
 CUSTOMER_NAME_MAX_LENGTH = 128
 CUSTOMER_EMAIL_MAX_LENGTH = 254  # Revised email length determinations

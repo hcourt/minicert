@@ -28,3 +28,14 @@ class CertificateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Certificate
         fields = '__all__'
+
+
+class CertificateUpdateSerializer(serializers.ModelSerializer):
+    """
+    A CertificateUpdateSerializer:
+    - Allows writes to 'active' only.
+    """
+
+    class Meta:
+        model = Certificate
+        fields = ('active',)
