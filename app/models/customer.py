@@ -1,4 +1,6 @@
+from django.contrib.auth.hashers import make_password
 from django.db import models
+from rest_framework import mixins
 
 CUSTOMER_NAME_MAX_LENGTH = 128
 CUSTOMER_EMAIL_MAX_LENGTH = 254  # Revised email length determinations
@@ -13,8 +15,8 @@ class Customer(models.Model):
     - Has a password
     - May have zero to many Certificates
 
-    Passwords are stored as a CharField, following Django's auth standards.
-    They are expected to be hashed appropriately by a serializer before storing.
+    Passwords are stored as a CharField, and hashed following Django's auth
+    standards.
     """
     name = models.CharField(max_length=CUSTOMER_NAME_MAX_LENGTH)
     email = models.CharField(max_length=CUSTOMER_EMAIL_MAX_LENGTH)
@@ -22,3 +24,7 @@ class Customer(models.Model):
 
     def __str__(self):
         return "{} ({})".format(self.name, self.email)
+
+    def save(self, *args, **kwargs):
+        self.password = make_password(self.password)
+        return super(Customer, self).save(args, kwargs)

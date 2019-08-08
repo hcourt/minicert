@@ -7,7 +7,7 @@ from app.models.certificate import Certificate
 from app.serialization.serializers import CertificateSerializer
 
 
-class CertificateView(generics.CreateAPIView, generics.RetrieveUpdateAPIView):
+class CertificateView(generics.CreateAPIView, generics.RetrieveAPIView):
     queryset = Certificate.objects.all()
     serializer_class = CertificateSerializer
 

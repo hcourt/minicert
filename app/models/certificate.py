@@ -12,6 +12,10 @@ class Certificate(models.Model):
     - Can be either active or inactive
     - Has a private key
     - Has a certificate body
+
+    We also assume:
+    - A certificate's private key is 2048 bytes.
+    - A certificate's cert body is 2048 bytes.
     """
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     active = models.BooleanField(default=True)

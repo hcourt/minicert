@@ -2,7 +2,6 @@ from django.urls import path
 
 from app.views.certificate import *
 from app.views.customer import *
-import app.views.customer
 from app.views import index
 
 urlpatterns = [
