@@ -3,13 +3,27 @@ version: '3'
 services:
   minicert:
     build: .
-    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000 --settings=minicert.settings.${CONFIG_ENV}"
+    command: bash -c "./entrypoint.sh"
+    environment:
+      CONFIG_ENV: ${CONFIG_ENV}
     container_name: minicert
     volumes:
       - .:/var/docker/minicert
     ports:
       - "8000:8000"
+    depends_on:
+      - db
+      - httpbin
   httpbin:
     image: kennethreitz/httpbin
     ports:
       - "80:80"
+  db:
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - "8001:5432"
+
+volumes:
+  postgres_data:

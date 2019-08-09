@@ -6,3 +6,5 @@
 
 # SQLite db
 db.sqlite3
+
+app/migrations/
