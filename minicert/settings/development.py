@@ -16,4 +16,4 @@ DATABASES = {
 }
 
 # Certificate authority to contact when activating and deactivating certificates
-ACTIVATE_AUTHORITY = 'http://0.0.0.0:80/post'
+ACTIVATE_AUTHORITY = 'http://httpbin:80/post'

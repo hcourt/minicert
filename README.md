@@ -14,6 +14,7 @@ This API supports:
 ## Prerequisites
 
 This documentation assumes you have
+ [Docker](https://www.docker.com/products/docker-desktop),
  [Git](https://git-scm.com/),
  [Python (3.6+)](https://www.python.org/downloads/),
  [pip](https://pip.pypa.io/en/stable/installing/),
@@ -34,6 +35,12 @@ Clone the repository
 git clone https://github.com/hcourt/minicert.git
 ```
 
+### ... with Docker
+```console
+docker-compose up --build
+```
+
+### ... without Docker
 Start a virtualenv
 ```console
 $ python -m venv ~/.virtualenvs/minicertenv
@@ -47,6 +54,12 @@ $ pip install -r requirements/py3.txt
 ```
 
 ## Production
+### with Docker
+```console
+CONFIG_ENV=production docker-compose up
+```
+
+### without Docker
 Run the server
 ```console
 python manage.py runserver --settings=minicert.settings.production
@@ -71,12 +84,19 @@ $ python manage.py shell
 ```
 
 ### Run a development build
+
+#### with Docker
+```console
+CONFIG_ENV=development docker-compose up
+```
+
+
+#### without Docker
 Run a dummy http server for certificate authority mocking.  We use 
 [httpbin](httpbin.org).
 ```console
 sudo docker run -p 80:80 kennethreitz/httpbin
 ```
-
 Run the server
 ```console
 python manage.py runserver
