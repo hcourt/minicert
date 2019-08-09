@@ -6,6 +6,11 @@ SECRET_KEY = 'your-secret-here'
 # Certificate authority to contact when activating and deactivating certificates
 ACTIVATE_AUTHORITY = 'http://httpbin:80/post'
 
+
+# SECURITY WARNING: don't run with debug turned on in production!
+# Note:
+DEBUG = True
+
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 DATABASES = {
@@ -17,5 +22,6 @@ DATABASES = {
         'PORT': 5432  # default postgres port
     }
 }
-
+STATIC_ROOT = "/static"
 ALLOWED_HOSTS = ['*']
+USE_X_FORWARDED_HOST = True

@@ -9,8 +9,9 @@ services:
     container_name: minicert
     volumes:
       - .:/var/docker/minicert
-    ports:
-      - "8000:8000"
+      - ./minicert/static:/static
+    expose:
+      - "8000"
     depends_on:
       - db
       - httpbin
@@ -24,6 +25,16 @@ services:
       - postgres_data:/var/lib/postgresql/data/
     ports:
       - "8001:5432"
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/var/docker/minicert
+      - ./minicert/nginx:/etc/nginx/conf.d
+      - ./minicert/static:/static
+    depends_on:
+      - minicert
 
 volumes:
   postgres_data:
