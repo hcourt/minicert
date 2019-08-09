@@ -14,8 +14,10 @@ This API supports:
 ## Prerequisites
 
 This documentation assumes you have
- [Docker](https://www.docker.com/products/docker-desktop),
- [Git](https://git-scm.com/),
+ [Docker](https://www.docker.com/products/docker-desktop) and
+ [Git](https://git-scm.com/) installed.
+ 
+Depending on your usecase, you may also want
  [Python (3.6+)](https://www.python.org/downloads/),
  [pip](https://pip.pypa.io/en/stable/installing/),
   and [virtualenv](https://virtualenv.pypa.io/en/latest/)
@@ -27,6 +29,20 @@ In production, minicert uses PostgreSQL for scale, but any
  SQL database can be used instead. See Django's documentation on
  [database setup](https://docs.djangoproject.com/en/2.2/topics/install/#get-your-database-running).
 
+## Scaling minicert
+
+This API and associated docker application have the following scaling properties
+- In production, the PostgreSQL database scales to terabytes of data.
+- In development, the SQLite database scales to gigabytes of data.
+- Because the main application runs in a single container on a single host 
+ behind the nginx container, it may not scale well with the number of concurrent
+ requests.  In production this application should be multiplexed behind a load
+ balancer.
+- The backing data stores are limited by the size of the host.  If you run
+ the PostgreSQL container on a small host, it will fill up your disk quickly. 
+ In a scaled production setting, the database should be located on dedicated 
+ hosts.
+
 
 ## Getting Started
 
@@ -37,7 +53,7 @@ git clone https://github.com/hcourt/minicert.git
 
 ### ... with Docker
 ```console
-docker-compose up --build
+docker-compose up
 ```
 
 ### ... without Docker
@@ -52,6 +68,9 @@ Install requirements
 ```console
 $ pip install -r requirements/py3.txt
 ```
+
+## Web App
+Visit the Django console for the API at http://localhost:8000/api/
 
 ## Production
 ### with Docker
