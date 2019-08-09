@@ -24,6 +24,7 @@ class CertificateSerializer(serializers.ModelSerializer):
     - Allows reads to all fields.
     - Allows writes to all fields.
     """
+    # TODO: serialize private_key
 
     class Meta:
         model = Certificate

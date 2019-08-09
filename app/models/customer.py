@@ -26,4 +26,4 @@ class Customer(models.Model):
 
     def save(self, *args, **kwargs):
         self.password = make_password(self.password)
-        return super(Customer, self).save(args, kwargs)
+        return super(Customer, self).save(*args, **kwargs)

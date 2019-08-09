@@ -16,5 +16,4 @@ DATABASES = {
     }
 }
 
-ACTIVATE_AUTHORITY = 'http://0.0.0.0:80/activate-cert'
-DEACTIVATE_AUTHORITY = 'http://0.0.0.0:80/deactivate-cert'
+ACTIVATE_AUTHORITY = 'http://0.0.0.0:80/post'
