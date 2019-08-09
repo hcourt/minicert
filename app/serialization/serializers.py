@@ -1,6 +1,6 @@
-from app.models.certificate import *
-
 from rest_framework import serializers
+
+from app.models.certificate import *
 
 
 class CustomerSerializer(serializers.ModelSerializer):

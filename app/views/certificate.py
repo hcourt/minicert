@@ -1,9 +1,7 @@
 import asyncio
 import logging
-import requests
 
 from rest_framework import generics, status
-from django.conf import settings
 
 from app.models.certificate import Certificate
 from app.serialization.serializers import CertificateSerializer, \

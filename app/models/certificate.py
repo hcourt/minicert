@@ -1,4 +1,5 @@
 from django.db import models
+
 from app.models.customer import Customer
 
 CERTIFICATE_PRIVATE_KEY_MAX_LENGTH = 2048

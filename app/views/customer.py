@@ -1,12 +1,11 @@
 from django.shortcuts import get_object_or_404
+from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework import generics
 
-from app.models.certificate import Certificate
 from app.models.customer import Customer
-from app.serialization.serializers import CustomerSerializer, \
-    CertificateSerializer
+from app.serialization.serializers import CertificateSerializer, \
+    CustomerSerializer
 
 
 class CustomerView(generics.CreateAPIView,
