@@ -73,12 +73,12 @@ $ pip install -r requirements/py3.txt
 Visit the Django console for the API at http://localhost:8000/api/
 
 ## Production
-### with Docker
+### ... with Docker
 ```console
 CONFIG_ENV=production docker-compose up
 ```
 
-### without Docker
+### ... without Docker
 Run the server
 ```console
 python manage.py runserver --settings=minicert.settings.production
@@ -104,13 +104,13 @@ $ python manage.py shell
 
 ### Run a development build
 
-#### with Docker
+#### ... with Docker
 ```console
 CONFIG_ENV=development docker-compose up
 ```
 
 
-#### without Docker
+#### ... without Docker
 Run a dummy http server for certificate authority mocking.  We use 
 [httpbin](httpbin.org).
 ```console

@@ -15,7 +15,7 @@ async def update_authority(active=None, pk=None, body=None):
     the certificate has become inactive.
     :param pk: primary key of the certificate
     :param body: body of the certificate.  Will be sent to the authority.
-    :return: after awaiting the post
+    :return: True if the call was successful
     """
 
     async def _post_async(*args, **kwargs):
@@ -26,17 +26,19 @@ async def update_authority(active=None, pk=None, body=None):
 
     loop = asyncio.get_event_loop()
     asyncio.set_event_loop(loop)
-    task = loop.create_task(_post_async(authority, data))
+    task = loop.create_task(_post_async(authority, data=data))
     response = await task
+    success = True
 
     if response.status_code == status.HTTP_200_OK:
         logging.info(
             "Notified authority %s that certificate %s is %s",
             authority, pk, "active" if active else "inactive")
     else:
+        success = False
         logging.error(
             "Unable to notify authority %s that certificate %s is %s: "
             "status %s",
             authority, pk, "active" if active else "inactive",
             response.status_code)
-    return
+    return success
