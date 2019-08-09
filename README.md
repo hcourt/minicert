@@ -122,14 +122,16 @@ $ python manage.py runserver
 ```
 
 
-## API Spec
+## API Specification
 You are encouraged to visit the API via a browser.  The UI makes it simple to
  navigate between endpoints.
  
 The examples below are accomplished with `curl`, but you could visit these
  in-browser as well.
 ### Index
-#### `GET /api/`
+#### `/api/`
+_Allowed: OPTIONS, GET_
+
 List all API endpoints
 
 <details> <summary>Example</summary>
@@ -153,7 +155,7 @@ $ curl http://localhost:8000/api/
 
 ### Customers
 #### `/api/customers/`
-_Allowed: GET_
+_Allowed: GET, HEAD, OPTIONS_
 
 List all certificates
 
@@ -256,7 +258,7 @@ $ curl http://localhost:8000/api/customer/1/active-certs/
 
 ### Certificates
 #### `/api/certificates/`
-_Allowed: GET_
+_Allowed: GET, HEAD, OPTIONS_
 
 List all certificates
 
