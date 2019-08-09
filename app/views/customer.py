@@ -4,8 +4,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from app.models.customer import Customer
-from app.serialization.serializers import CertificateSerializer, \
-    CustomerSerializer
+from app.serialization.certificate import CertificateSerializer
+from app.serialization.customer import CustomerSerializer
 
 
 class CustomerView(generics.CreateAPIView,

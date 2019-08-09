@@ -4,7 +4,7 @@ import logging
 from rest_framework import generics, status
 
 from app.models.certificate import Certificate
-from app.serialization.serializers import CertificateSerializer, \
+from app.serialization.certificate import CertificateSerializer, \
     CertificateUpdateSerializer
 from app.services import authority
 
