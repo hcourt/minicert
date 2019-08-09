@@ -13,17 +13,26 @@ This API supports:
 
 ## Prerequisites
 
-This documentation assumes you have Git, Python (3.5+), pip, virtualenv, and 
-Django (2.2+) installed.  If you don't, follow these instructions:
+This documentation assumes you have
+ [Git](https://git-scm.com/),
+ [Python (3.6+)](https://www.python.org/downloads/),
+ [pip](https://pip.pypa.io/en/stable/installing/),
+  and [virtualenv](https://virtualenv.pypa.io/en/latest/)
+ installed.
 
-TODO
+In development, minicert uses a SQLite (3.8.3+) database for simplicity.
 
-Minicert uses a SQLite (3.8.3+) database for simplicity, but any SQL database can be used
- instead. See Django's documentation on [database setup](https://docs.djangoproject.com/en/2.2/topics/install/#get-your-database-running).
+In production, minicert uses PostgreSQL for scale, but any
+ SQL database can be used instead. See Django's documentation on
+ [database setup](https://docs.djangoproject.com/en/2.2/topics/install/#get-your-database-running).
+
 
 ## Getting Started
 
 Clone the repository
+```console
+git clone https://github.com/hcourt/minicert.git
+```
 
 Start a virtualenv
 ```console
@@ -37,13 +46,15 @@ Install requirements
 $ pip install -r requirements/py3.txt
 ```
 
+## Production
 Run the server
 ```console
-python manage.py runserver
+python manage.py runserver --settings=minicert.settings.production
 ```
 
 ## Development
 
+### Database changes
 Create database migrations for model updates
 ```console
 $ python manage.py makemigrations app
@@ -52,7 +63,21 @@ Run migrations against the database
 ```console
 $ python manage.py migrate
 ```
-Start a shell
+
+### Shell
+Start a python shell in the Django environment
 ```console
 $ python manage.py shell
+```
+
+### Run a development build
+Run a dummy http server for certificate authority mocking.  We use 
+[httpbin](httpbin.org).
+```console
+sudo docker run -p 80:80 kennethreitz/httpbin
+```
+
+Run the server
+```console
+python manage.py runserver
 ```
